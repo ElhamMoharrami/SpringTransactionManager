@@ -7,9 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class TransactionGeneratorApplication {
 
 	public static void main(String[] args) {
-
-		//SpringApplication.run(TransactionGeneratorApplication.class, args);
-		System.out.println("hello from transaction generator");
+		SpringApplication.run(TransactionGeneratorApplication.class, args);
 	}
 
 }
