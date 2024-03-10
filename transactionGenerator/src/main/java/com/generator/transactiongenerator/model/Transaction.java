@@ -10,12 +10,15 @@ public class Transaction {
     private final String amount;
     private final String date;
 
+    private final String status;
+
     @Override
     public String toString() {
         return id +
                 "," + sourceAccountId +
                 "," + destinationAccountId +
                 "," + amount +
-                "," + date;
+                "," + date +
+                "," + status;
     }
 }

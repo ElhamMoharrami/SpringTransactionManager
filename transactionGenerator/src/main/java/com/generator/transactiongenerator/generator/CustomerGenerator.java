@@ -2,7 +2,6 @@ package com.generator.transactiongenerator.generator;
 
 import com.generator.transactiongenerator.AppConfig;
 import com.generator.transactiongenerator.model.Customer;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -12,11 +11,15 @@ import java.util.Random;
 
 @Component
 public class CustomerGenerator extends Generator<Customer> implements CommandLineRunner {
-    @Autowired
+
     private AppConfig appConfig;
 
+    public CustomerGenerator(AppConfig appConfig) {
+        this.appConfig = appConfig;
+    }
+
     @Override
-    public Boolean generate() {
+    public List<Customer> generate() {
         String[] names = {"Alice", "Bob", "Charlie", "David", "Emma", "Frank", "Grace", "Henry", "Ivy", "Jack"};
         String[] familyNames = {"Smith", "Johnson", "Williams", "Jones", "Brown", "Davis", "Miller", "Wilson",
                 "Moore", "Taylor"};
@@ -35,7 +38,7 @@ public class CustomerGenerator extends Generator<Customer> implements CommandLin
         }
         writeToFile(customers, appConfig.getCustomerCount(), "id,first_name,last_name,postCode",
                 appConfig.getCustomersFilePath());
-        return true;
+        return customers;
     }
 
     @Override

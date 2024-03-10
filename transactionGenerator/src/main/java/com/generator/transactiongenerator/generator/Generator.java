@@ -36,5 +36,5 @@ public abstract class Generator<T> {
         }
     }
 
-    abstract Boolean generate();
+    abstract List<T> generate();
 }

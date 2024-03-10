@@ -18,4 +18,7 @@ public class AppConfig {
 
     @Value("${transaction.manager.generator.account.destination}")
     private String accountsFilePath;
+
+    @Value("${transaction.manager.generator.transaction.destination}")
+    private String transactionFilePath;
 }

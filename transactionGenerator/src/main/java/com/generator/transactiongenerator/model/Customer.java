@@ -1,7 +1,6 @@
 package com.generator.transactiongenerator.model;
 
 import lombok.RequiredArgsConstructor;
-import lombok.ToString;
 
 @RequiredArgsConstructor
 public class Customer {
