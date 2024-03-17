@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Getter
 @Configuration
-public class AppConfig {
+public class AppProperties {
     @Value("${transaction.manager.generator.customer.count}")
     private int customerCount;
 

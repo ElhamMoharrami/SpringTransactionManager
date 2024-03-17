@@ -1,6 +1,6 @@
 package com.generator.transactiongenerator.generator;
 
-import com.generator.transactiongenerator.AppConfig;
+import com.generator.transactiongenerator.AppProperties;
 import com.generator.transactiongenerator.model.Account;
 import com.generator.transactiongenerator.model.Transaction;
 import org.springframework.stereotype.Component;
@@ -13,10 +13,10 @@ import java.util.concurrent.ThreadLocalRandom;
 @Component
 public class TransactionGenerator extends Generator<Transaction> {
 
-    private final AppConfig appConfig;
+    private final AppProperties appConfig;
     private List<Account> accountList;
 
-    public TransactionGenerator(AppConfig appConfig) {
+    public TransactionGenerator(AppProperties appConfig) {
         this.appConfig = appConfig;
     }
 

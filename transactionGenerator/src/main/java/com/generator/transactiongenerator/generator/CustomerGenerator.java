@@ -1,6 +1,6 @@
 package com.generator.transactiongenerator.generator;
 
-import com.generator.transactiongenerator.AppConfig;
+import com.generator.transactiongenerator.AppProperties;
 import com.generator.transactiongenerator.model.Customer;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -12,9 +12,9 @@ import java.util.Random;
 @Component
 public class CustomerGenerator extends Generator<Customer> implements CommandLineRunner {
 
-    private AppConfig appConfig;
+    private AppProperties appConfig;
 
-    public CustomerGenerator(AppConfig appConfig) {
+    public CustomerGenerator(AppProperties appConfig) {
         this.appConfig = appConfig;
     }
 

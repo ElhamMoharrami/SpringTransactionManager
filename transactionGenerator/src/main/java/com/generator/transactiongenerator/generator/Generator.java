@@ -1,6 +1,5 @@
 package com.generator.transactiongenerator.generator;
 
-import com.opencsv.CSVWriter;
 import org.springframework.stereotype.Component;
 
 import java.io.FileWriter;
@@ -19,17 +18,14 @@ public abstract class Generator<T> {
             writeToCsv(sublist, fileName, headers);
             fileNumber++;
         }
-        System.out.println("file wrote to "+filePath);
+        System.out.println("file wrote to " + filePath);
     }
 
     private void writeToCsv(List<T> sublist, String fileName, String headers) {
-        try (CSVWriter writer = new CSVWriter(new FileWriter(fileName))) {
-            String[] headersArr = headers.split(",");
-            writer.writeNext(headersArr);
-
+        try (FileWriter writer = new FileWriter(fileName)) {
+            writer.write(headers + "\n");
             for (T record : sublist) {
-                String[] data = record.toString().split(",");
-                writer.writeNext(data);
+                writer.write(record.toString() + "\n");
             }
         } catch (IOException e) {
             throw new RuntimeException(e);

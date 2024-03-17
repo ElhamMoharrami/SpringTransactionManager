@@ -1,4 +1,4 @@
-package com.loader.loader;
+package com.loader.loader.model;
 
 
 
