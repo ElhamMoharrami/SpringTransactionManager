@@ -32,5 +32,5 @@ public abstract class Generator<T> {
         }
     }
 
-    abstract List<T> generate();
+    protected abstract List<T> generate();
 }

@@ -1,6 +1,7 @@
-package com.generator.transactiongenerator.generator;
+package com.generator.transactiongenerator.generator.transactionGenerator;
 
 import com.generator.transactiongenerator.AppProperties;
+import com.generator.transactiongenerator.generator.Generator;
 import com.generator.transactiongenerator.model.Account;
 import com.generator.transactiongenerator.model.Transaction;
 import org.springframework.stereotype.Component;
@@ -8,7 +9,6 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
 
 @Component
 public class TransactionGenerator extends Generator<Transaction> {
@@ -25,7 +25,7 @@ public class TransactionGenerator extends Generator<Transaction> {
     }
 
     @Override
-    List<Transaction> generate() {
+    public List<Transaction> generate() {
         List<Transaction> transactions = new ArrayList<>();
         int maxTransactionPerAccount = 50;
         int transactionId = 0;
@@ -37,14 +37,12 @@ public class TransactionGenerator extends Generator<Transaction> {
             if (destination == acc.getAccId()) {
                 status = "fail";
             }
-            double amount = Math.round((random.nextDouble() * 999 + 1) * 100.0) / 100.0;
-            long minEpoch = 0L;
-            long maxEpoch = 1893456000000L; // January 1, 2030 in milliseconds
-            long randomEpoch = ThreadLocalRandom.current().nextLong(minEpoch, maxEpoch);
             for (int i = 0; i < numberOfTransactions; i++) {
-                Transaction transaction = new Transaction(transactionId, acc.getAccId(),
-                        accountList.get(destination).getAccId(), Double.toString(amount),
-                        Long.toString(randomEpoch), status);
+                TransactionBuilder transactionBuilder = new TransactionBuilderImpl();
+                Transaction transaction = transactionBuilder.withTransactionId(transactionId)
+                        .withSrcAccountId(acc.getAccId())
+                        .withDestAccountId(accountList.get(destination).getAccId())
+                        .withAmount().withDate().withStatus(status).build();
                 transactions.add(transaction);
                 transactionId++;
             }

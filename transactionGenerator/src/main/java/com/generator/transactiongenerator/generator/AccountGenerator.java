@@ -1,6 +1,7 @@
 package com.generator.transactiongenerator.generator;
 
 import com.generator.transactiongenerator.AppProperties;
+import com.generator.transactiongenerator.generator.transactionGenerator.TransactionGenerator;
 import com.generator.transactiongenerator.model.Account;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
